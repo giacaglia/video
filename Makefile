@@ -7,10 +7,10 @@ FREE_LIBS = -L/usr/local/lib -lfreenect
 CXX = c++
 
 test:  test.cpp
-        $(CXX) $(INCLUDE) $(CFLAGS) $? -o $@  $(LIBS) $(FREE_LIBS)
+	$(CXX) $(INCLUDE) $(CFLAGS) $? -o $@  $(LIBS) $(FREE_LIBS)
 
 %.o: %.cpp
-        $(CXX) -c $(CFLAGS) $< -o $@
+	$(CXX) -c $(CFLAGS) $< -o $@
 
 clean:
-        rm -rf *.o test
+	rm -rf *.o test
