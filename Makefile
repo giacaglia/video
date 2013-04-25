@@ -1,4 +1,4 @@
-all: test
+all: KinectVideoHandler
 
 CFLAGS=-fPIC -g -Wall `pkg-config --cflags opencv`
 LIBS = `pkg-config --libs opencv`
@@ -6,7 +6,7 @@ INCLUDE = -I/usr/local/include/libfreenect
 FREE_LIBS = -L/usr/local/lib -lfreenect
 CXX = c++
 
-test:  test.cpp
+KinectVideoHandler:  KinectVideoHandler.cpp
 	$(CXX) $(INCLUDE) $(CFLAGS) $? -o $@  $(LIBS) $(FREE_LIBS)
 
 %.o: %.cpp
