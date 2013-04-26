@@ -86,16 +86,9 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
         bool m_new_depth_frame;
 };
 
-int snap() {
-	Freenect::Freenect freenect;
-        MyFreenectDevice& device = freenect.createDevice<MyFreenectDevice>(0);
-	Mat rgbMat(Size(640,480),CV_8UC3,Scalar(0));
-	device.getVideo(rgbMat);
-	return 0;
-}
-
 
 int main(int argc, char **argv) {
+	bool wrote(false);
         bool die(false);
         string filename("snapshot");
         string suffix(".png");
@@ -116,26 +109,32 @@ int main(int argc, char **argv) {
     while (!die) {
         device.getVideo(rgbMat);
         device.getDepth(depthMat);
+	if (!wrote) {
+		cv::imwrite("/Users/giu/Documents/GRobot/Data/KinectData.jpg", rgbMat);
+		depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
+		cv::imwrite("/Users/giu/Documents/GRobot/Data/KinectDepthData.jpg",depthf);
+		wrote = true;
+	}
         cv::imshow("rgb", rgbMat);
         depthMat.convertTo(depthf, CV_8UC1, 255.0/2048.0);
         cv::imshow("depth",depthf);
-                char k = cvWaitKey(5);
-                if( k == 27 ){
-                    cvDestroyWindow("rgb");
-                    cvDestroyWindow("depth");
-                        break;
-                }
-                if( k == 8 ) {
-                        std::ostringstream file;
-                        file << filename << i_snap << suffix;
-                        cv::imwrite(file.str(),rgbMat);
-                      i_snap++;
-                }
-                if(iter >= 1000) break;
-                iter++;
+        char k = cvWaitKey(5);
+        if( k == 27 ){
+       		cvDestroyWindow("rgb");
+                cvDestroyWindow("depth");
+        	break;
+        }
+        if( k == 8 ) {
+        	std::ostringstream file;
+                file << filename << i_snap << suffix;
+               	cv::imwrite(file.str(),rgbMat);
+                i_snap++;
+        }
+        if(iter >= 1000) break;
+        iter++;
     }
 
-        device.stopVideo();
-        device.stopDepth();
-        return 0;
+    device.stopVideo();
+    device.stopDepth();
+    return 0;
 }

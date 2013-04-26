@@ -7,4 +7,3 @@
 #include <cxcore.h>
 #include <highgui.h>
 
-int snap();
