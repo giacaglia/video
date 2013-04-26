@@ -87,6 +87,10 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 };
 
 int snap() {
+	Freenect::Freenect freenect;
+        MyFreenectDevice& device = freenect.createDevice<MyFreenectDevice>(0);
+	Mat rgbMat(Size(640,480),CV_8UC3,Scalar(0));
+	device.getVideo(rgbMat);
 	return 0;
 }
 
@@ -102,10 +106,6 @@ int main(int argc, char **argv) {
         Mat rgbMat(Size(640,480),CV_8UC3,Scalar(0));
         Mat ownMat(Size(640,480),CV_8UC3,Scalar(0));
 
-        //The next two lines must be changed as Freenect::Freenect isn't a template but the method createDevice:
-        //Freenect::Freenect<MyFreenectDevice> freenect;
-       //MyFreenectDevice& device = freenect.createDevice(0);
-        //by these two lines:
         Freenect::Freenect freenect;
         MyFreenectDevice& device = freenect.createDevice<MyFreenectDevice>(0);
 
