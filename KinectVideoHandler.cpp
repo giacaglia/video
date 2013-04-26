@@ -1,12 +1,4 @@
-#include "libfreenect.hpp"
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <pthread.h>
-#include <cv.h>
-#include <cxcore.h>
-#include <highgui.h>
-
+#include "KinectVideoHandler.h"
 using namespace cv;
 using namespace std;
 
@@ -94,6 +86,9 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
         bool m_new_depth_frame;
 };
 
+int snap() {
+	return 0;
+}
 
 
 int main(int argc, char **argv) {
