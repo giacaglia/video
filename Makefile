@@ -2,8 +2,8 @@ all: KinectVideoHandler
 
 CFLAGS=-fPIC -g -Wall `pkg-config --cflags opencv`
 LIBS = `pkg-config --libs opencv`
-INCLUDE = -I/usr/local/include/libfreenect
-FREE_LIBS = -L/usr/local/lib -lfreenect
+INCLUDE = -I/usr/local/include/libfreenect -I/Applications/matlab/MATLAB_Compiler_Runtime/v80/extern/include
+FREE_LIBS = -L/usr/local/lib -lfreenect 
 CXX = c++
 
 KinectVideoHandler:  KinectVideoHandler.cpp

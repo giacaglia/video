@@ -1,4 +1,5 @@
 #include "libfreenect.hpp"
+#include "lib/libsegmentImage.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
