@@ -1,3 +1,4 @@
+#include <mex.h>
 #include "libfreenect.hpp"
 #include "lib/libsegmentImage.h"
 #include <iostream>

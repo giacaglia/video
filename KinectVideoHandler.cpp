@@ -88,6 +88,9 @@ class MyFreenectDevice : public Freenect::FreenectDevice {
 
 
 int main(int argc, char **argv) {
+	mxArray * mxArrayFilename;
+	mxArrayFilename = mxCreateString("/Users/giu/Documents");
+	mlfSegmentImage(mxArrayFilename);
 	bool wrote(false);
         bool die(false);
         string filename("snapshot");
