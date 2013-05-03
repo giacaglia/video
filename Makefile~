@@ -14,8 +14,3 @@ KinectVideoHandler:  KinectVideoHandler.cpp
 
 clean:
 	rm -rf *.o KinectVideoHandler
-
-install: 
-	cp ./lib/libsegmentImage.dylib /usr/lib
-	cp /Applications/MATLAB/MATLAB_Compiler_Runtime/v81/runtime/maci64/libmwmclmcrrt.8.1.dylib /usr/lib
-	cp /Applications/MATLAB/MATLAB_Compiler_Runtime/v81/runtime/maci64/libmwmclmcrrt.dylib /usr/lib

@@ -1,0 +1,9 @@
+#!/bin/sh
+# set dynamic preload library path
+export DYLD_LIBRARY_PATH=/Applications/MATLAB/MATLAB_Compiler_Runtime/v81/runtime/maci64/
+./KinectVideoHandler
+
+# :/Users/giu/Documents/GRobot/Code/video/lib/
+
+# to debug, use:
+# dtruss ./KinectVideoHandler 2> out
